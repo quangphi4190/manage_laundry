@@ -29,19 +29,23 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.created at') }}</th>
+                                <th>STT</th>
+                                <th>Tên tiệm</th>
+                                <th>Quản lý tiệm</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if (isset($qlytiems)): ?>
+                            <?php if (isset($qlytiems)): $stt =1;?>
                             <?php foreach ($qlytiems as $qlytiems): ?>
                             <tr>
+                                <td>{{$stt++}}</td>
                                 <td>
                                     <a href="{{ route('admin.qlytiems.qlytiems.edit', [$qlytiems->id]) }}">
-                                        {{ $qlytiems->created_at }}
+                                        {{ $qlytiems->name }}
                                     </a>
                                 </td>
+                                <td>{{$qlytiems->first_name .' '.$qlytiems->last_name}}</td>                                
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.qlytiems.qlytiems.edit', [$qlytiems->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
@@ -53,10 +57,10 @@
                             <?php endif; ?>
                             </tbody>
                             <tfoot>
-                            <tr>
+                            <!-- <tr>
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th>{{ trans('core::core.table.actions') }}</th>
-                            </tr>
+                            </tr> -->
                             </tfoot>
                         </table>
                         <!-- /.box-body -->

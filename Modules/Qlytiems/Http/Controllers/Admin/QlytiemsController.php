@@ -9,6 +9,8 @@ use Modules\Qlytiems\Http\Requests\CreateQlytiemsRequest;
 use Modules\Qlytiems\Http\Requests\UpdateQlytiemsRequest;
 use Modules\Qlytiems\Repositories\QlytiemsRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Customers\Entities\Customer;
+use DB;
 
 class QlytiemsController extends AdminBaseController
 {
@@ -16,11 +18,9 @@ class QlytiemsController extends AdminBaseController
      * @var QlytiemsRepository
      */
     private $qlytiems;
-
     public function __construct(QlytiemsRepository $qlytiems)
     {
-        parent::__construct();
-
+        parent::__construct();        
         $this->qlytiems = $qlytiems;
     }
 
@@ -31,9 +31,10 @@ class QlytiemsController extends AdminBaseController
      */
     public function index()
     {
-        //$qlytiems = $this->qlytiems->all();
-
-        return view('qlytiems::admin.qlytiems.index', compact(''));
+        $qlytiems = $this->qlytiems->all();
+        $qlytiems = Qlytiems::select('qlytiems__qlytiems.*','users.last_name','users.first_name' )       
+        ->leftjoin('users', 'users.id', '=', 'qlytiems__qlytiems.user_id')->get();
+        return view('qlytiems::admin.qlytiems.index', compact('qlytiems'));
     }
 
     /**
@@ -43,7 +44,8 @@ class QlytiemsController extends AdminBaseController
      */
     public function create()
     {
-        return view('qlytiems::admin.qlytiems.create');
+        $users = DB::table('users')->get();
+        return view('qlytiems::admin.qlytiems.create',compact('users'));
     }
 
     /**
@@ -68,7 +70,9 @@ class QlytiemsController extends AdminBaseController
      */
     public function edit(Qlytiems $qlytiems)
     {
-        return view('qlytiems::admin.qlytiems.edit', compact('qlytiems'));
+        $user_id = $qlytiems->user_id ? $qlytiems->user_id : '' ;
+        $users = DB::table('users')->get();
+        return view('qlytiems::admin.qlytiems.edit', compact('qlytiems','users','user_id'));
     }
 
     /**

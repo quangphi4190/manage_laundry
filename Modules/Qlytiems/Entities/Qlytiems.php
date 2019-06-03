@@ -11,5 +11,10 @@ class Qlytiems extends Model
 
     protected $table = 'qlytiems__qlytiems';
     public $translatedAttributes = [];
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'description',
+        'status',
+        'user_id'
+    ];
 }

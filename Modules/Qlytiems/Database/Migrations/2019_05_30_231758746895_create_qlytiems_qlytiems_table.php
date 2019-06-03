@@ -15,7 +15,10 @@ class CreateQlytiemsQlytiemsTable extends Migration
         Schema::create('qlytiems__qlytiems', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // Your fields
+            $table->string('name');
+            $table->text('description');
+            $table->integer('status');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -13,6 +13,7 @@
 
 @section('content')
     {!! Form::open(['route' => ['admin.qlytiems.qlytiems.store'], 'method' => 'post']) !!}
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">
@@ -48,6 +49,9 @@
 @stop
 
 @push('js-stack')
+{!! Theme::script('vendor/jquery/chosen.jquery.js') !!}
+{!! Theme::script('js/jquery.formula.js') !!}
+{!! Theme::style('css/chosen.css') !!}
     <script type="text/javascript">
         $( document ).ready(function() {
             $(document).keypressAction({
