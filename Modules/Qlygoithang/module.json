@@ -1,0 +1,18 @@
+{
+    "name": "Qlygoithang",
+    "alias": "qlygoithang",
+    "description": "",
+    "keywords": [],
+    "version": "1.0.0",
+	"active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Qlygoithang\\Providers\\QlygoithangServiceProvider",
+        "Modules\\Qlygoithang\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Qlythietbi",
+    "alias": "qlythietbi",
+    "description": "",
+    "keywords": [],
+    "version": "1.0.0",
+	"active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Qlythietbi\\Providers\\QlythietbiServiceProvider",
+        "Modules\\Qlythietbi\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}
