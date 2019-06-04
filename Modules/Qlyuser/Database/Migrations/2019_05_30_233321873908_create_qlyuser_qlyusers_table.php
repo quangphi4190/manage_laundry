@@ -15,7 +15,13 @@ class CreateQlyuserQlyusersTable extends Migration
         Schema::create('qlyuser__qlyusers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // Your fields
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('gender');
+            $table->string('mail');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('status');
             $table->timestamps();
         });
     }

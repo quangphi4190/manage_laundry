@@ -13,6 +13,7 @@
 
 @section('content')
     {!! Form::open(['route' => ['admin.qlyuser.qlyuser.update', $qlyuser->id], 'method' => 'put']) !!}
+ 
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">
@@ -22,6 +23,7 @@
                     @foreach (LaravelLocalization::getSupportedLocales() as $locale => $language)
                         <?php $i++; ?>
                         <div class="tab-pane {{ locale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
+                        <input hidden name = "id" value ="<?php echo $qlyuser->id?>">
                             @include('qlyuser::admin.qlyusers.partials.edit-fields', ['lang' => $locale])
                         </div>
                     @endforeach

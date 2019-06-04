@@ -14,8 +14,22 @@ class CreateQlythietbiQlythietbisTable extends Migration
     {
         Schema::create('qlythietbi__qlythietbis', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            // Your fields
+            $table->increments('id');           
+            $table->string('name');
+            $table->text('description');
+            $table->integer('status');
+            $table->string('model');
+            $table->string('noisanxuat');
+            $table->string('congsuat');
+            $table->string('duongkinhlong');
+            $table->string('dosaulong');
+            $table->string('tocdogiac');
+            $table->string('tocdovat');
+            $table->string('congsuatbom');
+            $table->string('dongco');
+            $table->string('kichthuoc');
+            $table->string('trongluong');
+            $table->string('dienap');
             $table->timestamps();
         });
     }

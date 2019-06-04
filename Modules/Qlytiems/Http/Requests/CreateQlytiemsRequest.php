@@ -8,7 +8,11 @@ class CreateQlytiemsRequest extends BaseFormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required',
+            'user_id'=>'required',
+            'description'=>'required'
+        ];
     }
 
     public function translationRules()
@@ -23,7 +27,11 @@ class CreateQlytiemsRequest extends BaseFormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'name.required'     =>  'Vui lòng nhập tên tiệm',
+            'description.required'     =>  'Vui lòng nhập mô tả tiệm',
+            'user_id.required'     =>  'Vui lòng người quản lý tiệm'
+        ];
     }
 
     public function translationMessages()

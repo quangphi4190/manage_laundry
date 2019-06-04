@@ -13,6 +13,7 @@
 
 @section('content')
     {!! Form::open(['route' => ['admin.qlythietbi.qlythietbi.update', $qlythietbi->id], 'method' => 'put']) !!}
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">

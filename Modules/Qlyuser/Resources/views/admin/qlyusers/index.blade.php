@@ -29,19 +29,57 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.created at') }}</th>
-                                <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
+                                <th>STT</th>
+                                <th>Họ tên</th>
+                                <th>Giới tính</th>                              
+                                <th>Số điện thoại</th>
+                                <th>Email</th>                                
+                                <th>Địa chỉ</th>                               
+                                <th>Chức năng</th>                                
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if (isset($qlyusers)): ?>
+                            <?php if (isset($qlyusers)): $stt =1;?>
                             <?php foreach ($qlyusers as $qlyuser): ?>
                             <tr>
-                                <td>
+                            <td>
                                     <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
-                                        {{ $qlyuser->created_at }}
+                                        {{ $stt ++}}
                                     </a>
                                 </td>
+                                <td>
+                                    <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
+                                        {{ $qlyuser->firstname.' '.$qlyuser->lastname }}
+                                    </a>
+                                </td>                               
+                                <td>
+                                    <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
+                                       <?php if( $qlyuser->gender == 1) {
+                                           echo 'Nam';
+                                        } elseif ($qlyuser->gender == 2) {
+                                               echo 'Nữ';
+                                         } else {
+                                               echo 'N/A';
+                                         }
+                                           ?>
+                                    </a>
+                                </td>
+                               
+                                <td>
+                                    <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
+                                        {{ $qlyuser->phone }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
+                                        {{ $qlyuser->mail }}
+                                    </a>
+                                </td>                               
+                                <td>
+                                    <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}">
+                                        {{ $qlyuser->address }}
+                                    </a>
+                                </td> 
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.qlyuser.qlyuser.edit', [$qlyuser->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>

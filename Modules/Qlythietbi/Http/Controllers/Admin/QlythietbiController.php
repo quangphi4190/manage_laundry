@@ -31,9 +31,9 @@ class QlythietbiController extends AdminBaseController
      */
     public function index()
     {
-        //$qlythietbis = $this->qlythietbi->all();
+        $qlythietbis = $this->qlythietbi->all();
 
-        return view('qlythietbi::admin.qlythietbis.index', compact(''));
+        return view('qlythietbi::admin.qlythietbis.index', compact('qlythietbis'));
     }
 
     /**
@@ -43,7 +43,8 @@ class QlythietbiController extends AdminBaseController
      */
     public function create()
     {
-        return view('qlythietbi::admin.qlythietbis.create');
+        $qlythietbi = new Qlythietbi();
+        return view('qlythietbi::admin.qlythietbis.create', compact('qlythietbi'));
     }
 
     /**
@@ -54,8 +55,19 @@ class QlythietbiController extends AdminBaseController
      */
     public function store(CreateQlythietbiRequest $request)
     {
-        $this->qlythietbi->create($request->all());
-
+        //$this->qlythietbi->create($request->all());
+        
+        $qlythietbi = new Qlythietbi();
+        $qlythietbi->name = $request['name'] ? $request['name'] : '';
+        $qlythietbi->model = $request['model'] ? $request['model'] : '';
+        $qlythietbi->noisanxuat = $request['noisanxuat'] ? $request['noisanxuat'] : ''; 
+        $qlythietbi->congsuat = $request['congsuat'] ? $request['congsuat'] : '';
+        $qlythietbi->dongco = $request['dongco'] ? $request['dongco'] : '';
+        $qlythietbi->kichthuoc = $request['kichthuoc'] ? $request['kichthuoc'] :''; 
+        $qlythietbi->trongluong = $request['trongluong'] ? $request['trongluong']: '';
+        $qlythietbi->dienap = $request['dienap'] ? $request['dienap'] :'';
+        $qlythietbi->description = $request['description'] ? $request['description'] : ''; 
+        $qlythietbi->save();
         return redirect()->route('admin.qlythietbi.qlythietbi.index')
             ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('qlythietbi::qlythietbis.title.qlythietbis')]));
     }
