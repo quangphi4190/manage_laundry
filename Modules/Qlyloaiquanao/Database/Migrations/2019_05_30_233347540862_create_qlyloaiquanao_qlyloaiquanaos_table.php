@@ -15,7 +15,12 @@ class CreateQlyloaiquanaoQlyloaiquanaosTable extends Migration
         Schema::create('qlyloaiquanao__qlyloaiquanaos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // Your fields
+            $table->string('name');
+            $table->string('note');
+            $table->string('type');
+            $table->string('number');;
+            $table->integer('user_id');
+            $table->string('status');
             $table->timestamps();
         });
     }

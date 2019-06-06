@@ -29,17 +29,39 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.created at') }}</th>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Loại sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Ghi chú</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if (isset($qlyloaiquanaos)): ?>
+                            <?php if (isset($qlyloaiquanaos)): $stt =1;?>
                             <?php foreach ($qlyloaiquanaos as $qlyloaiquanao): ?>
                             <tr>
                                 <td>
+                                    {{$stt ++}}
+                                </td>
+                                <td>
                                     <a href="{{ route('admin.qlyloaiquanao.qlyloaiquanao.edit', [$qlyloaiquanao->id]) }}">
-                                        {{ $qlyloaiquanao->created_at }}
+                                        {{ $qlyloaiquanao->name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlyloaiquanao.qlyloaiquanao.edit', [$qlyloaiquanao->id]) }}">
+                                        {{ $qlyloaiquanao->type }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlyloaiquanao.qlyloaiquanao.edit', [$qlyloaiquanao->id]) }}">
+                                        {{ $qlyloaiquanao->number }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlyloaiquanao.qlyloaiquanao.edit', [$qlyloaiquanao->id]) }}">
+                                    <?php echo $qlyloaiquanao->note;?>
                                     </a>
                                 </td>
                                 <td>
@@ -52,12 +74,7 @@
                             <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>{{ trans('core::core.table.created at') }}</th>
-                                <th>{{ trans('core::core.table.actions') }}</th>
-                            </tr>
-                            </tfoot>
+                            
                         </table>
                         <!-- /.box-body -->
                     </div>

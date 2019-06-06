@@ -49,7 +49,7 @@
                                         {{ $qlythietbi->model }}
                                     </a>
                                 </td>
-                                <td> {{ $qlythietbi->description }} </td>
+                                <td> <?php echo $qlythietbi->description;?> </td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.qlythietbi.qlythietbi.edit', [$qlythietbi->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>

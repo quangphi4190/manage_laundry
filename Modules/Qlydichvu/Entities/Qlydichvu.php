@@ -11,5 +11,5 @@ class Qlydichvu extends Model
 
     protected $table = 'qlydichvu__qlydichvus';
     public $translatedAttributes = [];
-    protected $fillable = [];
+    protected $fillable = ['name','note','type','status','price','code'];
 }

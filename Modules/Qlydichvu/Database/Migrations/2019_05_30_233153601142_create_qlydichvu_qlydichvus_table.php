@@ -15,7 +15,12 @@ class CreateQlydichvuQlydichvusTable extends Migration
         Schema::create('qlydichvu__qlydichvus', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // Your fields
+            $table->string('name');
+            $table->string('note');
+            $table->string('type');
+            $table->string('status');
+            $table->integer('price');
+            $table->integer('code');
             $table->timestamps();
         });
     }

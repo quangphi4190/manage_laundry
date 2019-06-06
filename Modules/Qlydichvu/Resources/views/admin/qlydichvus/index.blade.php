@@ -29,17 +29,45 @@
                         <table class="data-table table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>{{ trans('core::core.table.created at') }}</th>
+                                <th>STT</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Mã dịch vụ</th>
+                                <th>Giá dịch vụ</th>
+                                <th>Loại dịch vụ</th>
+                                <th>Ghi chú</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if (isset($qlydichvus)): ?>
+                            <?php if (isset($qlydichvus)):$stt = 1; ?>
                             <?php foreach ($qlydichvus as $qlydichvu): ?>
                             <tr>
+                                 <td>
+                                    {{$stt++}}
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.qlydichvu.qlydichvu.edit', [$qlydichvu->id]) }}">
-                                        {{ $qlydichvu->created_at }}
+                                        {{ $qlydichvu->name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlydichvu.qlydichvu.edit', [$qlydichvu->id]) }}">
+                                        {{ $qlydichvu->code }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlydichvu.qlydichvu.edit', [$qlydichvu->id]) }}">
+                                        {{ $qlydichvu->price }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlydichvu.qlydichvu.edit', [$qlydichvu->id]) }}">
+                                        {{ $qlydichvu->type }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.qlydichvu.qlydichvu.edit', [$qlydichvu->id]) }}">
+                                        <?php echo $qlydichvu->note;?>
                                     </a>
                                 </td>
                                 <td>

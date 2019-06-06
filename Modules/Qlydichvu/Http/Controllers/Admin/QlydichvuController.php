@@ -31,9 +31,9 @@ class QlydichvuController extends AdminBaseController
      */
     public function index()
     {
-        //$qlydichvus = $this->qlydichvu->all();
+        $qlydichvus = $this->qlydichvu->all();
 
-        return view('qlydichvu::admin.qlydichvus.index', compact(''));
+        return view('qlydichvu::admin.qlydichvus.index', compact('qlydichvus'));
     }
 
     /**
@@ -54,8 +54,15 @@ class QlydichvuController extends AdminBaseController
      */
     public function store(CreateQlydichvuRequest $request)
     {
-        $this->qlydichvu->create($request->all());
-
+        //$this->qlydichvu->create($request->all());
+        $qlydichvu = new Qlydichvu();
+        $qlydichvu->name = $request['name'] ? $request['name'] :'';
+        $qlydichvu->type = $request['type'] ? $request['type'] :'';
+        $qlydichvu->code = $request['code']? $request['code'] :'';
+        $qlydichvu->note = $request['note']? $request['note'] :'';
+        $qlydichvu->price = $request['price']? $request['price'] :'';
+        $qlydichvu->status = 1;
+        $qlydichvu->save();
         return redirect()->route('admin.qlydichvu.qlydichvu.index')
             ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('qlydichvu::qlydichvus.title.qlydichvus')]));
     }
@@ -68,7 +75,8 @@ class QlydichvuController extends AdminBaseController
      */
     public function edit(Qlydichvu $qlydichvu)
     {
-        return view('qlydichvu::admin.qlydichvus.edit', compact('qlydichvu'));
+        $type = $qlydichvu->type;
+        return view('qlydichvu::admin.qlydichvus.edit', compact('qlydichvu','type'));
     }
 
     /**

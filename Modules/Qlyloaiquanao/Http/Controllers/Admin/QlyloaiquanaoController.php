@@ -31,9 +31,9 @@ class QlyloaiquanaoController extends AdminBaseController
      */
     public function index()
     {
-        //$qlyloaiquanaos = $this->qlyloaiquanao->all();
+        $qlyloaiquanaos = $this->qlyloaiquanao->all();
 
-        return view('qlyloaiquanao::admin.qlyloaiquanaos.index', compact(''));
+        return view('qlyloaiquanao::admin.qlyloaiquanaos.index', compact('qlyloaiquanaos'));
     }
 
     /**
@@ -54,8 +54,14 @@ class QlyloaiquanaoController extends AdminBaseController
      */
     public function store(CreateQlyloaiquanaoRequest $request)
     {
-        $this->qlyloaiquanao->create($request->all());
-
+        $qlyloaiquanao = new Qlyloaiquanao();
+        //$this->qlyloaiquanao->create($request->all());
+        $qlyloaiquanao->name = $request['name'] ? $request['name'] :'';
+        $qlyloaiquanao->type = $request['type'] ? $request['type'] :'';
+        $qlyloaiquanao->number = $request['number']? $request['number'] :'';
+        $qlyloaiquanao->note = $request['note']? $request['note'] :'';
+        $qlyloaiquanao->status = 1;
+        $qlyloaiquanao->save();
         return redirect()->route('admin.qlyloaiquanao.qlyloaiquanao.index')
             ->withSuccess(trans('core::core.messages.resource created', ['name' => trans('qlyloaiquanao::qlyloaiquanaos.title.qlyloaiquanaos')]));
     }
@@ -68,7 +74,8 @@ class QlyloaiquanaoController extends AdminBaseController
      */
     public function edit(Qlyloaiquanao $qlyloaiquanao)
     {
-        return view('qlyloaiquanao::admin.qlyloaiquanaos.edit', compact('qlyloaiquanao'));
+        $type = $qlyloaiquanao->type;     
+        return view('qlyloaiquanao::admin.qlyloaiquanaos.edit', compact('qlyloaiquanao','type'));
     }
 
     /**
@@ -80,8 +87,14 @@ class QlyloaiquanaoController extends AdminBaseController
      */
     public function update(Qlyloaiquanao $qlyloaiquanao, UpdateQlyloaiquanaoRequest $request)
     {
-        $this->qlyloaiquanao->update($qlyloaiquanao, $request->all());
-
+        //$this->qlyloaiquanao->update($qlyloaiquanao, $request->all());
+        $name = $request['name'] ? $request['name'] :'';
+        $type = $request['type'] ? $request['type'] :'';
+        $number = $request['number']? $request['number'] :'';
+        $status = 1;
+        $note = $request['note'] ? $request['note']:'';
+        Qlyloaiquanao::where('id', $request['id'])->update(array('name'=>$name,'type'=>$type,'number'=>$number,'note'=>$note,'status'=>$status));
+ 
         return redirect()->route('admin.qlyloaiquanao.qlyloaiquanao.index')
             ->withSuccess(trans('core::core.messages.resource updated', ['name' => trans('qlyloaiquanao::qlyloaiquanaos.title.qlyloaiquanaos')]));
     }

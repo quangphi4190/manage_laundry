@@ -11,5 +11,5 @@ class Qlyloaiquanao extends Model
 
     protected $table = 'qlyloaiquanao__qlyloaiquanaos';
     public $translatedAttributes = [];
-    protected $fillable = [];
+    protected $fillable = ['name','type','note','number'];
 }
